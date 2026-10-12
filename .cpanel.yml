@@ -1,0 +1,21 @@
+---
+# Despliegue automático de cPanel (Git Version Control).
+#
+# Al pulsar «Deploy HEAD Commit» en cPanel, se ejecutan estas tareas y el
+# contenido de public/ pasa a la carpeta pública del sitio.
+#
+# ANTES DE USARLO: sustituye USUARIO_CPANEL por tu usuario real de cPanel.
+# Lo ves arriba a la derecha en cPanel, o en la ruta /home/XXXX de tu cuenta.
+#
+# Si abrevajams.edu.mx no es el dominio principal de esa cuenta de cPanel,
+# cambia public_html/ por la carpeta del dominio (cPanel → Dominios).
+#
+# El punto de «public/.» es importante: hace que se copien también los
+# archivos ocultos, como .htaccess. Con «public/*» se quedarían fuera.
+
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/USUARIO_CPANEL/public_html/
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R public/. $DEPLOYPATH
+    - /bin/chmod 644 $DEPLOYPATH.htaccess
