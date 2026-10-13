@@ -15,7 +15,7 @@
 
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/USUARIO_CPANEL/public_html/
+    - export DEPLOYPATH=/home/r0sel1/public_html/abrevajams.edu.mx/
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -R public/. $DEPLOYPATH
     - /bin/chmod 644 $DEPLOYPATH.htaccess
